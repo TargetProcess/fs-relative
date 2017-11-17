@@ -5,11 +5,10 @@ cache:
 notifications:
   email: false
 node_js:
-  - '9'
   - '8'
-  - '6'
 script:
   - npm run lint
+  - npm run build
 after_success:
   - npm run semantic-release
 branches:

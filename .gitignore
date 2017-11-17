@@ -29,7 +29,10 @@ build/Release
 node_modules
 jspm_packages
 yarn-cache
+
+# build output
 bin
+lib
 
 # Optional npm cache directory
 .npm
@@ -39,7 +42,3 @@ bin
 
 .jshintignore
 .jshintrc
-
-.ssh
-git
-tmp

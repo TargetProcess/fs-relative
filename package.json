@@ -59,6 +59,9 @@
     "lint",
     "validate"
   ],
+  "engines": {
+    "node": ">= 8.8.1"
+  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
