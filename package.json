@@ -1,0 +1,67 @@
+{
+  "name": "fs-relative",
+  "version": "0.0.0-development",
+  "description": "Set of extended fs methods relative to specified path or current directory",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "commit": "git-cz",
+    "build": "npm run _clean && tsc --pretty",
+    "lint": "npm run _tslint && npm run _eclint",
+    "lint:fix": "npm run _tslint:fix && npm run _eclint:fix",
+    "_tslint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "_tslint:fix": "prettier --config .prettierrc --write \"src/**/*.ts\" && tslint --fix \"src/**/*.ts\"",
+    "_eclint": "eclint check '**/*.*' '!**/node_modules/**' '!**/bin/**/*.*' '!.git/**/*.*' '!**/*.ts' '!**/*.js'",
+    "_eclint:fix": "eclint fix '**/*.*' '!**/node_modules/**' '!**/bin/**/*.*' '!.git/**/*.*' '!**/*.ts' '!**/*.js'",
+    "_clean": "rimraf lib",
+    "validate": "npm ls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "globby": "^6.1.0",
+    "pify": "^3.0.0",
+    "tmp-promise": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^4.0.2",
+    "@types/globby": "^6.1.0",
+    "@types/node": "^8.0.46",
+    "@types/pify": "^3.0.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "eclint": "^2.5.0",
+    "precommit-hook": "^3.0.0",
+    "prettier": "^1.8.2",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^8.2.0",
+    "tslint": "^5.8.0",
+    "tslint-config-prettier": "^1.6.0",
+    "typescript": "^2.6.1"
+  },
+  "keywords": [
+    "fs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TargetProcess/fs-relative.git"
+  },
+  "author": "Pavel Shapel <shapel@targetprocess.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TargetProcess/fs-relative/issues"
+  },
+  "homepage": "https://github.com/TargetProcess/fs-relative#readme",
+  "pre-commit": [
+    "lint",
+    "validate"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
