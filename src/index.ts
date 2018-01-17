@@ -79,21 +79,21 @@ export default (basePath: string = __dirname): IFileStorage => {
     writeFile(path: string, content: string): Promise<void> {
       return writeFile(getFullPath(path), content, 'utf8')
     },
-    copyToTmp: async (
-      src: string,
-      options: fsExtra.CopyOptions = { overwrite: false, errorOnExist: true }
-    ): Promise<string> => {
-      const dir = await tmp.dir()
-      const tempDir = dir.path
-      await this.copy(src, tempDir, options)
-      return tempDir
-    },
     copy(
       src: string,
       dest: string,
       options: fsExtra.CopyOptions = { overwrite: false, errorOnExist: true }
     ): Promise<void> {
       return fsExtra.copy(getFullPath(src), getFullPath(dest), options)
+    },
+    copyToTmp: async (
+      src: string,
+      options: fsExtra.CopyOptions = { overwrite: false, errorOnExist: true }
+    ): Promise<string> => {
+      const dir = await tmp.dir()
+      const tempDir = dir.path
+      await fsExtra.copy(getFullPath(src), getFullPath(tempDir), options)
+      return tempDir
     }
   }
 }
